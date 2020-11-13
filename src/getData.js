@@ -9,8 +9,10 @@ const needle = require('needle'),
     mounth:'https://github.com/trending?since=monthly'
   },
   getSource = promisify(needle.get),
-  pData = {},
-  getData = (timeInterval) => {
+  pData = {}
+
+  
+const  getData = (timeInterval) => {
 
       return new Promise((res, rej) => {
       getSource(`${URL[timeInterval]}`)
