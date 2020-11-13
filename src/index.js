@@ -40,15 +40,19 @@ const importData = (prop, callback) => {
 const updateAll = () => {
   return new Promise(res => {
     insertData('today')
-      .then(() => {
-        insertData('weak')
-          .then(() => {
-            insertData('mounth')
-              .then(() => {
-                res()
-              })
-          })
-      })
+    .then(() => insertData('weak'))
+    .then(()=> insertData('mounth'))
+    .then(() => res())
+    // insertData('today')
+    //   .then(() => {
+    //     insertData('weak')
+    //       .then(() => {
+    //         insertData('mounth')
+    //           .then(() => {
+    //             res()
+    //           })
+    //       })
+    //   })
   })
 }
 
