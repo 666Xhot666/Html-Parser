@@ -38,7 +38,7 @@ class Base {
         this.tableName = name.toString()
         this.client.query(`CREATE TABLE IF NOT EXISTS ${this.tableName} (
            id INT UNIQUE NOT NULL,
-           title VARCHAR (50) UNIQUE NOT NULL,
+           title VARCHAR (50) NOT NULL,
            description VARCHAR (2000) NOT NULL,
            url VARCHAR (255) UNIQUE NOT NULL,
            language VARCHAR (50) NOT NULL,
