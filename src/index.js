@@ -3,6 +3,8 @@ const getData = require('./getData'),
   db = new Base()
 
 db.connect()
+.then(res => console.log(res.msg))
+.catch(err => console.error(err.msg))
 
 const insertData = (timeInterval) => { // today, weak, mounth
   return new Promise(resolve => {
@@ -23,7 +25,10 @@ const insertData = (timeInterval) => { // today, weak, mounth
                 db.disconect()
               })
           })
-          .catch(err => console.error(err))
+          .catch(err => {
+            console.error(err.msg)
+            db.disconect()
+          })
       })
       .catch(err => console.error(err))
   })
@@ -43,16 +48,6 @@ const updateAll = () => {
     .then(() => insertData('weak'))
     .then(()=> insertData('mounth'))
     .then(() => res())
-    // insertData('today')
-    //   .then(() => {
-    //     insertData('weak')
-    //       .then(() => {
-    //         insertData('mounth')
-    //           .then(() => {
-    //             res()
-    //           })
-    //       })
-    //   })
   })
 }
 
