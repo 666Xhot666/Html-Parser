@@ -28,7 +28,6 @@ class Base {
   }
 
   disconect() {
-    console.log(this.client);
       this.client.end()
   }
 
