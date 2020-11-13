@@ -6,7 +6,7 @@ const grab = flag =>{
 const time = grab("--time")
 
 if(time === 'today'){
-  console.log(`Your choose is ${time}`)
+  console.log(`You have selected a time interval ${time} please a wait`)
   app.insertData(time)
   .then(() =>{
     app.importData({tableName: `${time}`, close: true},res =>{
@@ -16,7 +16,7 @@ if(time === 'today'){
 
 }
 else if (time === 'weak') {
-  console.log(`Your choose is ${time} a wait please`)
+  console.log(`You have selected a time interval ${time} please a wait `)
   app.insertData(time)
   .then(() =>{
     app.importData({tableName: `${time}`, close: true},res =>{
@@ -26,7 +26,7 @@ else if (time === 'weak') {
 
 }
 else if (time === 'mounth') {
-  console.log(`Your choose is ${time} a wait please`)
+  console.log(`You have selected a time interval ${time} please a wait `)
   app.insertData(time)
   .then(() =>{
     app.importData({tableName: `${time}`, close: true},res =>{
@@ -36,7 +36,7 @@ else if (time === 'mounth') {
 
 }
 else if (time === 'all') {
-  console.log(`Your choose is ${time} a wait please`)
+  console.log(`You have selected a time interval ${time} please a wait `)
   app.updateAll()
   .then(()=>{
     app.importData({tableName: 'today', close: false},(today) => {
