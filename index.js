@@ -1,61 +1,19 @@
-const app = require('./src')
+const app = require('./app')
 const grab = flag =>{
   let indexAfterFlag = process.argv.indexOf(flag) + 1
-  return process.argv[indexAfterFlag]
+  return process.argv[indexAfterFlag].toLowerCase()
 }
 const time = grab("--time")
+const update = process.argv.includes('--update')
+const variants = ['today','weak','mounth','all']
 
-if(time === 'today'){
-  console.log(`You have selected a time interval ${time} please a wait`)
-  app.insertData(time)
-  .then(() =>{
-    app.importData({tableName: `${time}`, close: true},res =>{
-      console.log(res);
-    })
-  })
-
+if(variants.includes(time)){
+  console.log(`You choose ${time}`)
+    app({time:time, update:update})
 }
-else if (time === 'weak') {
-  console.log(`You have selected a time interval ${time} please a wait `)
-  app.insertData(time)
-  .then(() =>{
-    app.importData({tableName: `${time}`, close: true},res =>{
-      console.log(res);
-    })
-  })
-
-}
-else if (time === 'mounth') {
-  console.log(`You have selected a time interval ${time} please a wait `)
-  app.insertData(time)
-  .then(() =>{
-    app.importData({tableName: `${time}`, close: true},res =>{
-      console.log(res);
-    })
-  })
-
-}
-else if (time === 'all') {
-  console.log(`You have selected a time interval ${time} please a wait `)
-  app.updateAll()
-  .then(()=>{
-    app.importData({tableName: 'today', close: false},(today) => {
-     console.log('Articles for today =>',today)
-     app.importData({tableName: 'weak', close: false},(weak) => {
-      console.log('Articles for weak => ', weak);
-      app.importData({tableName: 'mounth', close: true},(mounth) => {
-       console.log('Articles for mounth =>', mounth);
-     })
-    })
-   })
-  })
-}
-else {
-  console.log(`You didn't choose anything. Setup default: today`)
-  app.insertData('today')
-  .then(() =>{
-    app.importData({tableName: 'today', close: true},res =>{
-      console.log(res)
-    })
-  })
+else{
+  console.log(`You choose nothing set default <<today>> \n
+    If you want to choose another period of time. \n
+    Please start application whith flag --time [today,weak,mounth,all] `)
+    app({time:'today', update:update})
 }

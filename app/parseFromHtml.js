@@ -8,12 +8,10 @@ const needle = require('needle'),
     weak: 'https://github.com/trending?since=weekly',
     mounth:'https://github.com/trending?since=monthly'
   },
-  getSource = promisify(needle.get),
-  pData = {}
+  getSource = promisify(needle.get)
 
-  
-const  getData = (timeInterval) => {
-
+  const getData = (timeInterval) => {
+      let pData = {}
       return new Promise((res, rej) => {
       getSource(`${URL[timeInterval]}`)
         .then((data) => {
