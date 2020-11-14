@@ -14,6 +14,8 @@
   <p> }</p>
 
 3. Now you can run application node index.js  --time [[your period of time]]
-    - node index.js with no argument setup a default period of time: 'today'
-    - node index.js --time all will give the result at all times
-    - node index.js --time today will give the result trend repositories for today
+    - node index.js : with no argument setup a default period of time: 'today'
+    - node index.js --time all : will give the result at all times
+    - node index.js --time today : will give the result trend repositories for today
+    - node index.js --update : will start the database update
+<h1>Warning:</h1></n> <p>If you are launching the application for the first time, be sure to specify the flag --update<p>
