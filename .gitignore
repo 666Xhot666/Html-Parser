@@ -88,4 +88,4 @@ typings/
 .dynamodb/
 
 # Credentials
-/data/credentials.json
+/database/credentials.json
